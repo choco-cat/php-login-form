@@ -12,7 +12,7 @@ class Registration extends Controller
 
     public function registration()
     {
-        $this->view->set_filename('register');
+        $this->view->set_filename('registration');
         $this->view->render(['page_title' => 'Registration Page']);
     }
 }
