@@ -14,6 +14,7 @@ class Index extends Controller
     {
         echo '<br>Index Page - controller';
 
-        $this->view->render('index');
+        $this->view->set_filename('index');
+        $this->view->render(['page_title' => 'Index Page']);
     }
 }

@@ -17,6 +17,10 @@ class Router
         }
 
         switch ($url) {
+            case 'login':
+                $controller = new Login();
+                $controller->login();
+                return false;
             case 'index':
             default:
                 $controller = new Index();

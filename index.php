@@ -14,3 +14,8 @@ require BASE_PATH . 'libs/Controller.php';
 require BASE_PATH . 'libs/Router.php';
 
 new Router();
+
+
+//$template = $twig->load('index.html');
+
+//echo $template->render(['Header' => 'Login form', 'Text' => 'my text']);

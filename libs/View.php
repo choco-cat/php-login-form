@@ -16,7 +16,12 @@ class View
         ]);
     }
 
-    public function render($template, $args = []) {
-        print $this->twig->render($template . '.html', $args);
+    public function set_filename($template) {
+        $this->template = $this->twig->load($template . '.html');
+    }
+
+    public function render($args = []) {
+        print $this->template->render($args);
+        //print $this->twig->render($template . '.html', $args);
     }
 }
