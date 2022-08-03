@@ -1,11 +1,16 @@
 <?php
+define('BASE_PATH', dirname(realpath(__FILE__)) . '/');
+const VIEW_PATH = BASE_PATH . 'view/';
+
 require_once './vendor/autoload.php';
 
-$loader = new \Twig\Loader\FilesystemLoader('./templates/base/');
+$loader = new \Twig\Loader\FilesystemLoader(VIEW_PATH);
 $twig = new \Twig\Environment($loader, [
     'cache' => './cache',
 ]);
 
-$template = $twig->load('index.html');
+require BASE_PATH . 'libs/View.php';
+require BASE_PATH . 'libs/Controller.php';
+require BASE_PATH . 'libs/Router.php';
 
-echo $template->render(['Header' => 'Login form', 'Text' => 'my text']);
+new Router();
