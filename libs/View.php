@@ -5,7 +5,6 @@
  */
 class View
 {
-    public $loader;
     public $twig;
     public $template;
 
@@ -22,6 +21,5 @@ class View
 
     public function render($args = []) {
         print $this->template->render($args);
-        //print $this->twig->render($template . '.html', $args);
     }
 }

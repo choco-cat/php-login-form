@@ -20,12 +20,16 @@ class Router
             case 'login':
                 $controller = new Login();
                 $controller->login();
-                return false;
+                break;
+            case 'registration':
+                $controller = new Registration();
+                $controller->registration();
+                break;
             case 'index':
             default:
                 $controller = new Index();
                 $controller->index();
-                return false;
+                break;
         }
     }
 }
