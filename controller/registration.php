@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Index Controller
+ * Registration Controller
  */
+
 class Registration extends Controller
 {
     function __construct()
@@ -12,10 +13,30 @@ class Registration extends Controller
 
     public function registration()
     {
-        require ('./model/ModelAuthorization.php');
-        $registration_model = new ModelAuthorization();
-        $registration_model->addUserData($_POST);
         $this->view->set_filename('registration');
-        $this->view->render(['page_title' => 'Registration Page']);
+        $template_data = array(
+            'page_title' => 'Registration Page'
+        );
+
+        $this->view->render($template_data);
+    }
+
+    public function sendData()
+    {
+        if (@$_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {
+
+            throw new Error('Page not work');
+        }
+        require('./model/registration.php');
+        $registration_model = new RegistrationModel();
+        $user_data = $_POST;
+        if ($user_data) {
+            unset($user_data['password_confirm']);
+            if ($registration_model->checkUserData($user_data)) {
+                $registration_model->addUserData($user_data);
+            }
+            echo json_encode($registration_model);
+            exit();
+        }
     }
 }

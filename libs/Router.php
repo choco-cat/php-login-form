@@ -6,8 +6,10 @@ class Router
     {
         $url = $_GET['url'] ?? 'index';
         $url = rtrim($url, '/');
-        $file = BASE_PATH . 'controller/' . $url . '.php';
-
+        $urlParts = explode('/', $url);
+        $baseUrl = $urlParts[0];
+        $file = BASE_PATH . 'controller/' . $baseUrl . '.php';
+        $params = $urlParts[1] ?? null;
         if (file_exists($file)) {
             require $file;
         } else {
@@ -16,14 +18,18 @@ class Router
             return false;
         }
 
-        switch ($url) {
+        switch ($baseUrl) {
             case 'login':
                 $controller = new Login();
                 $controller->login();
                 break;
             case 'registration':
                 $controller = new Registration();
-                $controller->registration();
+                if ($params === 'send') {
+                    $controller->sendData();
+                } else {
+                    $controller->registration();
+                }
                 break;
             case 'index':
             default:

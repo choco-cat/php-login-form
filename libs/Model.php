@@ -5,11 +5,12 @@
  */
 class Model
 {
-    public $twig;
-    public $template;
+    public $db;
+    public $errors;
 
     function __construct() {
-        $JsonDB = new JsonDB("./data/");
-        $JsonDB->createTable("users");
+        $this->db = new JsonDB("./data/");
+        $this->db->createTable("users");
+        $this->errors = [];
     }
 }
