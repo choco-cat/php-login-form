@@ -13,6 +13,10 @@ class RegistrationModel extends Model
 
     public function addUserData($data)
     {
+        $salt = $data['login'];
+        $hash = sha1($salt . $data['password'] );
+        $data['password'] = $hash;
+        unset($data['password_confirm']);
         $this->db->insert("users", $data, FALSE);
     }
 
