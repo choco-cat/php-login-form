@@ -32,7 +32,6 @@ class Registration extends Controller
         $registration_model = new RegistrationModel();
         $user_data = $_POST;
         if ($user_data) {
-            unset($user_data['password_confirm']);
             if ($registration_model->checkUserData($user_data)) {
                 $registration_model->addUserData($user_data);
             }

@@ -53,9 +53,9 @@ class JsonTable
         else {
             $data = $this->fileData;
             foreach ($data as $_key => $_val) {
-                if (isset($data[$_key][$key])) {
-                    if ($data[$_key][$key] == $val) {
-                        $result[] = $data[$_key];
+                if (isset($_val[$key])) {
+                    if ($_val[$key] == $val) {
+                        $result[] = $_val;
                     }
                 }
             }
@@ -76,8 +76,8 @@ class JsonTable
         else {
             $data = $this->fileData;
             foreach ($data as $_key => $_val) {
-                if (isset($data[$_key][$key])) {
-                    if ($data[$_key][$key] == $val) {
+                if (isset($_val[$key])) {
+                    if ($_val[$key] == $val) {
                         $data[$_key] = $newData;
                         $result = true;
                         break;
@@ -109,8 +109,8 @@ class JsonTable
         else {
             $data = $this->fileData;
             foreach ($data as $_key => $_val) {
-                if (isset($data[$_key][$key])) {
-                    if ($data[$_key][$key] == $val) {
+                if (isset($_val[$key])) {
+                    if ($_val[$key] == $val) {
                         unset($data[$_key]);
                         $result++;
                     }
