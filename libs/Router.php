@@ -13,7 +13,6 @@ class Router
         if (file_exists($file)) {
             require $file;
         } else {
-            echo 'Error';
             new Error('ERROR!');
             return false;
         }

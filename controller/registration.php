@@ -25,7 +25,8 @@ class Registration extends Controller
     {
         if (@$_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {
 
-            throw new Error('Page not work');
+            echo'Page not work!';
+            //throw new Error('Page not work');
         }
         require('./model/registration.php');
         $registration_model = new RegistrationModel();

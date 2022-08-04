@@ -8,6 +8,7 @@ $(document).ready(function () {
 });
 
 function sendAjaxForm(ajax_form, url) {
+    $('.error').remove();
     $.ajax({
         url: url,
         type: 'POST',
@@ -15,10 +16,12 @@ function sendAjaxForm(ajax_form, url) {
         data: $('#' + ajax_form).serialize(),
         success: function (response) {
             result = $.parseJSON(response);
-            console.log('Успешно');
+            if (result.errors) {
+                Object.keys(result.errors).forEach(field => $('#' + field).after(`<p class="error">${result.errors[field]}</p>`))
+            }
         },
         error: function (response) {
-            console.log('Ошибка');
+            console.log('Ошибка сервера!');
         }
     });
 }
