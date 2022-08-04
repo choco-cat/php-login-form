@@ -9,3 +9,9 @@ label {
     color: red;
     font-size: 0.8em;
 }
+
+.message {
+    background: green;
+    display: inline-flex;
+    padding: 1em;
+}

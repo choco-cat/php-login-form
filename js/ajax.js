@@ -16,8 +16,11 @@ function sendAjaxForm(ajax_form, url) {
         data: $('#' + ajax_form).serialize(),
         success: function (response) {
             result = $.parseJSON(response);
-            if (result.errors) {
-                Object.keys(result.errors).forEach(field => $('#' + field).after(`<p class="error">${result.errors[field]}</p>`))
+            if (Object.keys(result.errors).length > 0) {
+                Object.keys(result.errors).forEach(field => $('#' + field).after(`<p class="error">${result.errors[field]}</p>`));
+            } else {
+                $('#' + ajax_form).after('<p class="message">Вы успешно зарегистрировались</p>');
+                $('#' + ajax_form)[0].reset();
             }
         },
         error: function (response) {

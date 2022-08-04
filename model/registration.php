@@ -33,7 +33,7 @@ class RegistrationModel extends Model
 
     private function checkUserPassword($password, $passwordConfirm)
     {
-        preg_match("/^([a-zа-яё]+[\d]+)|([\d]+[a-zа-яё]+)$/i", $password, $matches);
+        preg_match('/(?=.*[0-9])(?=.*[a-z])[0-9a-z]{6,}/i', $password, $matches);
         if (count($matches) === 0){
             $this->errors['password'] = 'Пароль должен содержать и буквы, и цифры. ';
         }
