@@ -9,7 +9,7 @@ class Model
     public $errors;
 
     function __construct() {
-        $this->db = new JsonDB("./data/");
+        $this->db = new JsonDB('./../data/');
         $this->db->createTable("users");
         $this->errors = [];
     }

@@ -5,13 +5,13 @@
     {% block stylesheets %}
     <link href="css/main.css" type="text/css" rel="stylesheet" />
     {% endblock %}
-    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../index.php" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../index.php" type="image/x-icon"/>
 </head>
 <body>
 <nav>
     <ul>
-        <li><a href="./">Главная</a></li>
+        <li><a href="">Главная</a></li>
         {% if not auth %}
         <li><a href="./registration">Регистрация</a></li>
         <li><a href="./user">Авторизация</a></li>
