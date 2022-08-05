@@ -5,7 +5,8 @@
     {% block stylesheets %}
     <link href="css/main.css" type="text/css" rel="stylesheet" />
     {% endblock %}
-    <script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 </head>
 <body>
 <nav>
@@ -13,12 +14,13 @@
         <li><a href="./">Главная</a></li>
         {% if not auth %}
         <li><a href="./registration">Регистрация</a></li>
-        <li><a href="./login">Авторизация</a></li>
+        <li><a href="./user">Авторизация</a></li>
         {% else %}
-        <li><a href="./login/logout">Выйти</a></li>
+        <li><a href="./user/logout">Выйти</a></li>
         {% endif %}
     </ul>
 </nav>
+<main>
 {% if login %}
 <p>Hello, {{login}}</p>
 {% endif %}

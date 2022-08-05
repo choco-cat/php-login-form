@@ -18,8 +18,8 @@ class Router
         }
 
         switch ($baseUrl) {
-            case 'login':
-                $controller = new Login();
+            case 'user':
+                $controller = new User();
                 break;
             case 'registration':
                 $controller = new Registration();

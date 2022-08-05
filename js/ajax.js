@@ -7,7 +7,7 @@ $(document).ready(function () {
     );
     $('#submit-login').click(
         function () {
-            sendAjaxForm('login-form', './login/send', 'Вы успешно авторизовались');
+            sendAjaxForm('login-form', './user/send', 'Вы успешно авторизовались');
             return false;
         }
     );
