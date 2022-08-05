@@ -20,21 +20,20 @@ class Router
         switch ($baseUrl) {
             case 'login':
                 $controller = new Login();
-                $controller->login();
                 break;
             case 'registration':
                 $controller = new Registration();
-                if ($params === 'send') {
-                    $controller->sendData();
-                } else {
-                    $controller->registration();
-                }
                 break;
             case 'index':
             default:
                 $controller = new Index();
-                $controller->index();
                 break;
+        }
+
+        if ($params === 'send') {
+            $controller->sendData();
+        } else {
+            $controller->index();
         }
     }
 }

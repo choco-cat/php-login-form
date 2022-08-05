@@ -11,7 +11,7 @@ class Registration extends Controller
         parent::__construct();
     }
 
-    public function registration()
+    public function index()
     {
         $this->view->set_filename('registration');
         $template_data = array(

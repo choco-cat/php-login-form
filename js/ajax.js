@@ -5,6 +5,12 @@ $(document).ready(function () {
             return false;
         }
     );
+    $('#submit-login').click(
+        function () {
+            sendAjaxForm('login-form', './login/send');
+            return false;
+        }
+    );
 });
 
 function sendAjaxForm(ajax_form, url) {
