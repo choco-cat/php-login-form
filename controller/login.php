@@ -31,11 +31,30 @@ class Login extends Controller
         $user_data = $_POST;
         if ($user_data) {
             if ($login_model->checkLogin($user_data)) {
-                echo json_encode('success');
+                $this->auth($user_data);
+
             } else {
-                echo json_encode('error!');
+                echo json_encode($login_model);
             }
             exit();
         }
+    }
+
+    public function auth($user_data)
+    {
+        if (session_id() == "") {
+            session_start();
+        }
+        $session_timeout = 600;
+        $_SESSION['login'] = $user_data['login'];
+        $_SESSION['id'] = $user_data['id'];
+        $_SESSION['expires_by'] = time() + $session_timeout;
+        $_SESSION['expires_timeout'] = $session_timeout;
+        $rememberme = isset($_POST['rememberme']) ? true : false;
+        if ($rememberme) {
+            setcookie("login", $_POST["login"], time() + 3600 * 24 * 7);
+            setcookie("pass", $_POST["pass"], time() + 3600 * 24 * 7);
+        }
+        echo json_encode('success');
     }
 }
