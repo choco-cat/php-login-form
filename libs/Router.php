@@ -30,10 +30,16 @@ class Router
                 break;
         }
 
-        if ($params === 'send') {
-            $controller->sendData();
-        } else {
-            $controller->index();
+        switch ($params) {
+            case null:
+                $controller->index();
+                break;
+            case 'send':
+                $controller->sendData();
+                break;
+            case 'logout':
+                $controller->logout();
+                break;
         }
     }
 }

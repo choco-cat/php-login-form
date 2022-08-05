@@ -11,8 +11,15 @@
 <nav>
     <ul>
         <li><a href="./">Главная</a></li>
+        {% if not auth %}
         <li><a href="./registration">Регистрация</a></li>
         <li><a href="./login">Авторизация</a></li>
+        {% else %}
+        <li><a href="./login/logout">Выйти</a></li>
+        {% endif %}
     </ul>
 </nav>
+{% if login %}
+<p>Hello, {{login}}</p>
+{% endif %}
 <h1>{{page_title}}</h1>

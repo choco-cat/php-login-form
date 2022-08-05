@@ -23,7 +23,7 @@ class Login extends Controller
     {
         if (@$_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {
 
-            echo'Page not work!';
+            echo 'Page not work!';
             //throw new Error('Page not work');
         }
         require('./model/login.php');
@@ -47,7 +47,6 @@ class Login extends Controller
         }
         $session_timeout = 600;
         $_SESSION['login'] = $user_data['login'];
-        $_SESSION['id'] = $user_data['id'];
         $_SESSION['expires_by'] = time() + $session_timeout;
         $_SESSION['expires_timeout'] = $session_timeout;
         $rememberme = isset($_POST['rememberme']) ? true : false;
@@ -56,5 +55,11 @@ class Login extends Controller
             setcookie("pass", $_POST["pass"], time() + 3600 * 24 * 7);
         }
         echo json_encode('success');
+    }
+    public function logout()
+    {
+        session_start();
+        $_SESSION = [];
+        Header('Location: ./../');
     }
 }
